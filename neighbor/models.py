@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-class Neighbourhood(models.Model):
+class Neighborhood(models.Model):
     LOCATIONS = (
     ('Westlands','Westlands',),
     ('Dagoretti','Dagoretti'),
@@ -22,3 +22,9 @@ class Neighbourhood(models.Model):
 
     def __str__(self):
         return self.name
+
+    def create_neighborhood(self):
+        self.save()
+
+    def delete_neighborhood(self):
+        self.delete()
