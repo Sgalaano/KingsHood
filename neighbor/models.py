@@ -28,3 +28,15 @@ class Neighborhood(models.Model):
 
     def delete_neighborhood(self):
         self.delete()
+
+    @classmethod
+    def find_neighborhood(cls,neigborhood_id):
+        neighborhood = cls.objects.get(id = neigborhood_id)
+        return neighborhood
+
+    def update_neighborhood(self):
+        self.save()
+
+    def update_occupants(self):
+        self.occupants += 1
+        self.save()
