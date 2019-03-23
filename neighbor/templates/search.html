@@ -4,21 +4,26 @@
 
 <div class="container mt-5">
 
-  <p>{{message}}</p>
+  <h3>Results for: {{message}}</h3>
 
   {% if results %}
-      <div class="row mt-5">
-        {% for result in results%}
-        <div class="col-md-4 text-center">
-          <a href="{% url 'business' result.id %}">
-            <p>{{result.name}}</p>
-          </a>
-        </div>
-        {% endfor %}
+  <div class="row my-4">
+      {% for business in results %}
+      <div class="col-md-6">
+          <div class="card">
+              <div class="card-body">
+                  <h3 class="card-title" style="text-decoration:underline;">{{business.name}}</h3>
+                  <p class="card-text">{{business.description}}</p>
+                  <p class="card-text">Posted by: {{business.user.username}}</p>
+                  <p class="card-text">Contact: {{business.email}}</p>
+              </div>
+          </div>
       </div>
+      {% endfor%}
+  </div>
   {% else %}
-  <h3>0 Results.</h3>
-  {%endif %}
+      <h2 class="text-center">No match.</h2>
+  {% endif %}
 
 </div>
 
