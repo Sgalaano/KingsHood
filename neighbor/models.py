@@ -94,3 +94,17 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-pub_date']
+
+
+
+class Comment(models.Model):
+    comment = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    pub_date = models.DateTimeField(auto_now_add=True,null=True)
+
+    def __str__(self):
+        return f"{self.user.username} + {self.post}"
+
+    class Meta:
+        ordering = ['-pub_date']
