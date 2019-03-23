@@ -6,7 +6,7 @@ from .models import *
 from .forms import *
 
 # Create your views here.
-
+# @login_required(login_url='/accounts/login')
 def index(request):
     current_user = request.user
     profile = Profile.objects.get(user = current_user)
@@ -18,7 +18,11 @@ def index(request):
 
 # @login_required(login_url='/accounts/login')
 def search(request):
-
+    if 'search' in request.GET and request.GET['search']:
+        profile = Profile.objects.get(user = request.user)
+        search_term = request.GET.get('search')
+        results = Business.objects.filter(neighborhood = profile.neighborhood, name__icontains = search_term)
+        message = f'{search_term}'
     return render(request, 'search.html', locals())
 
 # @login_required(login_url='/accounts/login')

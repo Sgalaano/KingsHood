@@ -10,9 +10,8 @@
       <div class="row mt-5">
         {% for result in results%}
         <div class="col-md-4 text-center">
-          <a href="{% url 'project' result.id %}">
-          <img src="{{result.landing_image.url}}" alt="" width="300" height="200">
-          <p><a href="{% url 'project' result.id %}">{{result.title}}</a></p>
+          <a href="{% url 'business' result.id %}">
+            <p>{{result.name}}</p>
           </a>
         </div>
         {% endfor %}

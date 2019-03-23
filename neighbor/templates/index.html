@@ -13,14 +13,14 @@
                 <div class="card-body">
                     <h2 class="card-title">{{post.title}}</h2>
                     <p class="card-text">{{post.content}}</p>
-                    <a href="{% url 'post' post.id %}" class="btn btn-secondary">Read More</a>
+                    <a href="{% url 'post' post.id %}" class="btn btn-secondary">More...</a>
                 </div>
             </div>
         </div>
         {% endfor%}
     </div>
     {% else %}
-        <h2 class="text-center">No posts available.</h2>
+        <h2 class="text-center">There are no posts.</h2>
     {% endif %}
     <a href="{% url 'new-post' %}" class="btn btn-primary">New Post</a>
 </div>
