@@ -27,7 +27,8 @@ def search(request):
 
 # @login_required(login_url='/accounts/login')
 def business(request):
-
+    profile = Profile.objects.get(user = request.user)
+    businesses = Business.objects.filter(neighborhood = profile.neighborhood)
     return render(request, 'business.html', locals())
 
 # @login_required(login_url='/accounts/login')
