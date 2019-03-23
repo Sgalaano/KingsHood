@@ -16,9 +16,8 @@
     </div>
 
     <div class="col-md-3">
-      <p class="mt-1 font-weight-bold font-italic">{{user.username.username}}</p>
-      <!-- <p>{{user_object.profile.fullname}}</p> -->
-      <p>{{user.fullname}}</p>
+      <p class="mt-1 font-weight-bold font-italic">{{user.user.username}}</p>
+      <p>{{user.name}}</p>
 
       {% if user == current_user %}
       <a href="{% url 'edit-profile' %}">
@@ -46,7 +45,7 @@
       <p>{{user.bio | safe}}</p>
       {% endautoescape %}
 
-      <p>{{user.email}}</p>
+      <p>{{user.user.email}}</p>
     </div>
 
   </div>
@@ -54,18 +53,18 @@
 
 
 
-  <p class="mt-5 font-weight-bold" style="text-decoration: underline;">Projects</p>
+  <p class="mt-5 font-weight-bold" style="text-decoration: underline;">Posts</p>
   {% if user == current_user %}
-  <a href="{% url 'new-project' %}">
-    <button class="btn btn-success"type="button" name="button"><img src="https://img.icons8.com/nolan/48/000000/plus-math.png" width="24">  Submit Project</button>
+  <a href="{% url 'new-post' %}">
+    <button class="btn btn-success"type="button" name="button"><img src="https://img.icons8.com/nolan/48/000000/plus-math.png" width="24"> New Post</button>
   </a>
   {% endif %}
     <div class="row mt-3">
-      {% for project in projects %}
+      {% for post in posts %}
       <div class="col-md-4">
-        <a href="{% url 'project' project.id %}">
+        <a href="{% url 'post' post.id %}">
         <img src="{{project.landing_image.url}}" alt="" width="300" height="200">
-        <p><a href="{% url 'project' project.id %}">{{project.title}}</a></p>
+        <p><a href="{% url 'post' post.id %}">{{post.title}}</a></p>
         </a>
       </div>
       {% endfor %}

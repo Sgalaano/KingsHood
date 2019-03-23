@@ -35,12 +35,29 @@ def post(request, id):
 
 # @login_required(login_url='/accounts/login')
 def profile(request, id):
+    disp_user = request.user
+    user_object = request.user
+    current_user = Profile.objects.get(user__id=request.user.id)
+    user = Profile.objects.get(user__id=id)
+    posts = Post.objects.filter(user = user.user)
+    return render(request, "profile.html", locals())
 
-    return render(request, 'profile.html', locals())
 
 # @login_required(login_url='/accounts/login')
 def edit_profile(request):
-
+    disp_user = request.user
+    current_user=request.user
+    user_edit = Profile.objects.get(user__id=current_user.id)
+    title = "Edit Profile"
+    if request.method =='POST':
+        form=ProfileForm(request.POST,request.FILES,instance=request.user.profile)
+        if form.is_valid():
+            form.save()
+            print('success')
+            return redirect('profile', user_edit.id)
+    else:
+        form=ProfileForm(instance=request.user.profile)
+        print('error')
     return render(request,'edit_profile.html',locals())
 
 # @login_required(login_url='/accounts/login')
