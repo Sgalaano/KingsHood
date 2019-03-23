@@ -21,3 +21,8 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         exclude = ['user', 'neighborhood']
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('comment',)
