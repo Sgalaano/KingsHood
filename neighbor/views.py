@@ -76,10 +76,19 @@ def edit_profile(request):
 
 # @login_required(login_url='/accounts/login')
 def new_post(request):
-
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.neighborhood = request.user.profile.neighborhood
+            post.save()
+        return redirect('post', id)
+    else:
+        form = PostForm()
     return render(request,'new_post.html', locals())
 
 # @login_required(login_url='/accounts/login')
 def new_business(request):
-
+    
     return render(request, 'new_business.html', locals())
