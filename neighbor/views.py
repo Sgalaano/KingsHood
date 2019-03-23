@@ -8,13 +8,11 @@ from .forms import *
 # Create your views here.
 
 def index(request):
-    # current_user = request.user
-    # profile = Profile.objects.get(user = current_user)
-    #
-    # posts = Post.objects.filter(neighborhood = profile.neighborhood)
-    # businesses = Business.objects.filter(neighborhood = profile.neighborhood)
-    # hood = profile.neighborhood
-
+    current_user = request.user
+    profile = Profile.objects.get(user = current_user)
+    posts = Post.objects.filter(neighborhood = profile.neighborhood)
+    businesses = Business.objects.filter(neighborhood = profile.neighborhood)
+    hood = profile.neighborhood
     return render(request,'index.html', locals())
 
 
