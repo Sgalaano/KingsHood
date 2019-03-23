@@ -11,3 +11,8 @@ class NeighbourhoodForm(forms.ModelForm):
     class Meta:
         model = Neighborhood
         fields = ('name', 'location', 'occupants')
+
+class BusinessForm(forms.ModelForm):
+    class Meta:
+        model = Business
+        exclude = ['user', 'neighborhood']
