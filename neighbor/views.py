@@ -33,7 +33,18 @@ def business(request):
 
 # @login_required(login_url='/accounts/login')
 def post(request, id):
-
+    post = Post.objects.get(id=id)
+    comments = Comment.objects.filter(post = post)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.post = post
+            comment.save()
+        return redirect('post', id)
+    else:
+        form = CommentForm()
     return render(request, 'post.html', locals())
 
 # @login_required(login_url='/accounts/login')
