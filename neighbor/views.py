@@ -6,7 +6,7 @@ from .models import *
 from .forms import *
 
 # Create your views here.
-# @login_required(login_url='/accounts/login')
+@login_required(login_url='/accounts/login')
 def index(request):
     current_user = request.user
     profile = Profile.objects.get(user = current_user)
@@ -16,7 +16,7 @@ def index(request):
     return render(request,'index.html', locals())
 
 
-# @login_required(login_url='/accounts/login')
+@login_required(login_url='/accounts/login')
 def search(request):
     if 'search' in request.GET and request.GET['search']:
         profile = Profile.objects.get(user = request.user)
@@ -25,13 +25,13 @@ def search(request):
         message = f'{search_term}'
     return render(request, 'search.html', locals())
 
-# @login_required(login_url='/accounts/login')
+@login_required(login_url='/accounts/login')
 def business(request):
     profile = Profile.objects.get(user = request.user)
     businesses = Business.objects.filter(neighborhood = profile.neighborhood)
     return render(request, 'business.html', locals())
 
-# @login_required(login_url='/accounts/login')
+@login_required(login_url='/accounts/login')
 def post(request, id):
     post = Post.objects.get(id=id)
     comments = Comment.objects.filter(post = post)
@@ -47,7 +47,7 @@ def post(request, id):
         form = CommentForm()
     return render(request, 'post.html', locals())
 
-# @login_required(login_url='/accounts/login')
+@login_required(login_url='/accounts/login')
 def profile(request, id):
     disp_user = request.user
     user_object = request.user
@@ -57,7 +57,7 @@ def profile(request, id):
     return render(request, "profile.html", locals())
 
 
-# @login_required(login_url='/accounts/login')
+@login_required(login_url='/accounts/login')
 def edit_profile(request):
     disp_user = request.user
     current_user=request.user
@@ -74,7 +74,7 @@ def edit_profile(request):
         print('error')
     return render(request,'edit_profile.html',locals())
 
-# @login_required(login_url='/accounts/login')
+@login_required(login_url='/accounts/login')
 def new_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
@@ -88,7 +88,7 @@ def new_post(request):
         form = PostForm()
     return render(request,'new_post.html', locals())
 
-# @login_required(login_url='/accounts/login')
+@login_required(login_url='/accounts/login')
 def new_business(request):
     if request.method == 'POST':
         form = BusinessForm(request.POST)
