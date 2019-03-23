@@ -47,7 +47,7 @@ class Profile(models.Model):
     avatar = models.ImageField(upload_to='photos/',null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     name = models.CharField(max_length = 30)
-    neighborhood = models.ForeignKey(NeighborHood, on_delete=models.CASCADE, null=True)
+    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null=True)
     bio = models.TextField(null=True)
     email = models.EmailField(max_length = 60, null=True)
 
@@ -61,7 +61,7 @@ class Business(models.Model):
     email = models.EmailField(max_length = 30)
     description = models.TextField(null=True)
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-    neighbourhood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE)
+    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -79,3 +79,18 @@ class Business(models.Model):
 
     def update_business(self):
         self.save()
+
+
+
+class Post(models.Model):
+    title = models.CharField(max_length = 50)
+    content = models.TextField()
+    user = models.ForeignKey(User,on_delete = models.CASCADE)
+    neighborhood = models.ForeignKey(Neighborhood,on_delete = models.CASCADE)
+    pub_date = models.DateTimeField(auto_now_add=True,null=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['-pub_date']
