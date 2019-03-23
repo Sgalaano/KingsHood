@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+  <p>{{message}}</p>
+
+  {% if results %}
+      <div class="row mt-5">
+        {% for result in results%}
+        <div class="col-md-4 text-center">
+          <a href="{% url 'project' result.id %}">
+          <img src="{{result.landing_image.url}}" alt="" width="300" height="200">
+          <p><a href="{% url 'project' result.id %}">{{result.title}}</a></p>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+  {% else %}
+  <h3>0 Results.</h3>
+  {%endif %}
+
+</div>
+
+{% endblock %}
