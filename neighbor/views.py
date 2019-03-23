@@ -90,5 +90,14 @@ def new_post(request):
 
 # @login_required(login_url='/accounts/login')
 def new_business(request):
-    
+    if request.method == 'POST':
+        form = BusinessForm(request.POST)
+        if form.is_valid():
+            business = form.save(commit=False)
+            business.user = request.user
+            business.neighborhood = request.user.profile.neighborhood
+            business.save()
+        return redirect('post', id)
+    else:
+        form = BusinessForm()
     return render(request, 'new_business.html', locals())
