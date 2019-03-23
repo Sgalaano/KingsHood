@@ -72,7 +72,7 @@ class Business(models.Model):
     name = models.CharField(max_length = 30)
     email = models.EmailField(max_length = 30)
     description = models.TextField(null=True)
-    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE)
 
     def __str__(self):
