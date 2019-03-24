@@ -19,7 +19,7 @@ DaHood is a web application that allows you to be in the loop about everything h
 To use DaHood, you must login/register. Once logged in, you will be able to see posts and businesses only for your hood.
 You can add your posts and businesses in your hood.
 As a user you can search for a specific business from the search bar in the navbar.
-You also have the possibility to edit your profile and view the posts that you have submitted.
+You also have the possibility to edit your profile and view the posts that you've submitted.
 
 
 ### Tech used
