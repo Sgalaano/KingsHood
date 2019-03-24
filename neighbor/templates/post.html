@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+    <div class="container">
+        <div class="card mt-5">
+            <div class="card-body">
+                <h1 class="card-title">{{post.title}}</h1>
+                <p class="card-text">Posted by: {{post.user}}</p>
+                <hr>
+                <p class="card-text">{{post.content}}</p>
+                <form method="post">
+                    {% csrf_token %}
+                    {% bootstrap_form form layout='inline'%}
+                    <input type="submit" value="comment" class="btn-primary">
+                </form>
+            </div>
+        </div>
+        <div class="">
+            {% for comment in comments%}
+            <div class="">
+                <strong>{{comment.user}}: </strong>
+                <span>{{comment.comment}}</span>
+            </div>
+            {% endfor%}
+        </div>
+    </div>
+{% endblock %}

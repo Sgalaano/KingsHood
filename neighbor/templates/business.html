@@ -9,7 +9,7 @@
   {% if businesses %}
   <div class="row my-4">
       {% for business in businesses %}
-      <div class="col-md-6">
+      <div class="col-md-6 mb-3">
           <div class="card">
               <div class="card-body">
                   <h3 class="card-title" style="text-decoration:underline;">{{business.name}}</h3>
@@ -22,9 +22,9 @@
       {% endfor%}
   </div>
   {% else %}
-      <h2 class="text-center">There are no businesses.</h2>
+      <h2 class="text-center">No businesses.</h2>
   {% endif %}
-  <a href="{% url 'new-post' %}" class="btn btn-primary">New Business</a>
+  <a href="{% url 'new-business' %}"><button class="btn-primary">New Business</button></a>
 
 </div>
 

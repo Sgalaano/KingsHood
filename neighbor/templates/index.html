@@ -3,17 +3,17 @@
 {% block content %}
 <div class="container">
     <div class="text-center">
-        <h1>Welcome to {{hood}}</h1>
+        <h1>{{myhood}} Hood</h1>
     </div>
     {% if posts %}
     <div class="row my-4">
         {% for post in posts%}
-        <div class="col-md-6">
+        <div class="col-md-6 mb-3">
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title">{{post.title}}</h2>
-                    <p class="card-text">{{post.content}}</p>
-                    <a href="{% url 'post' post.id %}" class="btn btn-secondary">More...</a>
+                    <p class="card-text">{{post.content | truncatechars:150}}</p>
+                    <a href="{% url 'post' post.id %}"><button  class="btn-secondary">More...</button></a>
                 </div>
             </div>
         </div>
@@ -22,6 +22,6 @@
     {% else %}
         <h2 class="text-center">There are no posts.</h2>
     {% endif %}
-    <a href="{% url 'new-post' %}" class="btn btn-primary">New Post</a>
+    <a href="{% url 'new-post' %}"><button class="btn-primary">New Post</button></a>
 </div>
 {% endblock %}
