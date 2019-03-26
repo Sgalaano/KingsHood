@@ -8,8 +8,7 @@ from .forms import *
 # Create your views here.
 @login_required(login_url='/accounts/login')
 def index(request):
-    current_user = request.user
-    profile = Profile.objects.get(user = current_user)
+    profile = Profile.objects.get(user = request.user)
     posts = Post.objects.filter(neighborhood = profile.neighborhood)
     businesses = Business.objects.filter(neighborhood = profile.neighborhood)
     myhood = profile.neighborhood
@@ -27,29 +26,6 @@ def search(request):
         title = "Search Results"
     return render(request, 'search.html', locals())
 
-@login_required(login_url='/accounts/login')
-def business(request):
-    profile = Profile.objects.get(user = request.user)
-    businesses = Business.objects.filter(neighborhood = profile.neighborhood)
-    title = "Businesses"
-    return render(request, 'business.html', locals())
-
-@login_required(login_url='/accounts/login')
-def post(request, id):
-    post = Post.objects.get(id=id)
-    comments = Comment.objects.filter(post = post)
-    if request.method == 'POST':
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.user = request.user
-            comment.post = post
-            comment.save()
-        return redirect('post', id)
-    else:
-        form = CommentForm()
-    title = "Post"
-    return render(request, 'post.html', locals())
 
 @login_required(login_url='/accounts/login')
 def profile(request, id):
@@ -79,6 +55,25 @@ def edit_profile(request):
         print('error')
     return render(request,'edit_profile.html',locals())
 
+
+@login_required(login_url='/accounts/login')
+def post(request, id):
+    post = Post.objects.get(id=id)
+    comments = Comment.objects.filter(post = post)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.post = post
+            comment.save()
+        return redirect('post', id)
+    else:
+        form = CommentForm()
+    title = "Post"
+    return render(request, 'post.html', locals())
+
+
 @login_required(login_url='/accounts/login')
 def new_post(request):
     if request.method == 'POST':
@@ -93,6 +88,15 @@ def new_post(request):
         form = PostForm()
     title = "New Post"
     return render(request,'new_post.html', locals())
+
+
+@login_required(login_url='/accounts/login')
+def business(request):
+    profile = Profile.objects.get(user = request.user)
+    businesses = Business.objects.filter(neighborhood = profile.neighborhood)
+    title = "Businesses"
+    return render(request, 'business.html', locals())
+
 
 @login_required(login_url='/accounts/login')
 def new_business(request):
