@@ -68,7 +68,7 @@ $ sudo apt-get install postgresql postgresql-contrib libpq-dev
 No known bugs.
 
 ### Live link
-https://welcometomyhood.herokuapp.com
+https://dahood-nthomas.herokuapp.com/
 
 ### Licence
 This project is under the [MIT](https://github.com) licence
