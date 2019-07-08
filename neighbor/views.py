@@ -112,4 +112,3 @@ def new_business(request):
         form = BusinessForm()
     title = "New Business"
     return render(request, 'new_business.html', locals())
-.
