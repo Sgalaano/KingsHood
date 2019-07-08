@@ -111,3 +111,5 @@ media/
 !**/migrations
 !**/migrations/__init__.py
 
+virtual/
+virtual/

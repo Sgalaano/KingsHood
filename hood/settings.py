@@ -38,9 +38,9 @@ if config('MODE')=="dev":
   DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Kingshood',
-        'USER': '<galaano >',
-    'PASSWORD':'<galaano>',
+        'NAME': 'kingshood',
+        'USER': 'galaano',
+    'PASSWORD':'galaano',
     }
 }
 # production
@@ -66,7 +66,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'neighbor',
-    'bootstrap3',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [

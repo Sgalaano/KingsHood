@@ -1,10 +1,10 @@
-# DaHood
+# KingsHood
 
 ###  Author
-nignanthomas
+Galaano Suleiman
 
 ### Description
-DaHood is a web application that allows you to be in the loop about everything happening in your neighborhood.
+Kings Neighbourhood is a web application that allows you to be in the loop about everything happening in your neighborhood.
 
 ### User Stories
 1. Sign in with the application to start using.
@@ -16,7 +16,7 @@ DaHood is a web application that allows you to be in the loop about everything h
 1. Only view details of a single neighborhood.
 
 ### How to use
-To use DaHood, you must login/register. Once logged in, you will be able to see posts and businesses only for your hood.
+To use Kings Neighbourhood, you must login/register. Once logged in, you will be able to see posts and businesses only for your hood.
 You can add your posts and businesses in your hood.
 As a user you can search for a specific business from the search bar in the navbar.
 You also have the possibility to edit your profile and view the posts that you've submitted.
