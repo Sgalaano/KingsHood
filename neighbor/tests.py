@@ -105,3 +105,4 @@ class BusinessTestClass(TestCase):
         self.business.update_business()
         self.updated_business = Business.find_business(1)
         self.assertEqual(self.updated_business.name, 'New name')
+;
