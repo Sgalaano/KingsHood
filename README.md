@@ -49,7 +49,7 @@ $ sudo apt-get install postgresql postgresql-contrib libpq-dev
 
 ### Installation
 1. To access this application on your command line, you need to clone it
-`git clone https://github.com/nignanthomas/welcometomyhood.git`
+`git clone https://github.com/Sgalaano/KingsHood.git'
 1. Create a requirements.txt in the root folder and copy the requirements above.
 1. Install the required technologies with
 `pip install -r requirements.txt`
@@ -67,10 +67,7 @@ $ sudo apt-get install postgresql postgresql-contrib libpq-dev
 ### Known Bugs
 No known bugs.
 
-### Live link
-https://dahood-nthomas.herokuapp.com/
-
 ### Licence
 This project is under the [MIT](https://github.com) licence
 
-Copyright (c) 2019 [nignanthomas](https://github.com/nignanthomas/)
+Copyright (c) 2019 [Galaano suleiman]
